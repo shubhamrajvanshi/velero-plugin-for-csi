@@ -43,9 +43,14 @@ if [[ "${GOOS}" = "windows" ]]; then
 fi
 
 go build \
-    -o ${OUTPUT} \
+    -v -o ${OUTPUT} \
     -installsuffix "static" \
     -mod=readonly \
+    -buildvcs=false \
     ./
 
-CGO_ENABLED=0 go build -v -o ${OUTPUT_DIR}/cp-plugin ./hack/cp-plugin
+echo "csi build is complete, initiating cp-plugin build"
+
+CGO_ENABLED=0 go build -buildvcs=false -v -o ${OUTPUT_DIR}/cp-plugin ./hack/cp-plugin
+
+echo "finished building cp-plugin"

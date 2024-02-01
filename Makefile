@@ -17,7 +17,7 @@ BIN ?= velero-plugin-for-csi
 
 BUILD_IMAGE ?= golang:1.19.8-bullseye
 
-REGISTRY ?= velero
+REGISTRY ?= gcr.io/spectro-dev-public/velero
 IMAGE_NAME ?= $(REGISTRY)/velero-plugin-for-csi
 TAG ?= dev
 
